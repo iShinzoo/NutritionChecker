@@ -1,4 +1,4 @@
-# RunTrack
+# NutritionChecker
 
 NutritionChecker is a Fitness Tracking app designed to provide instant access to comprehensive nutrition information for any food item. Whether you're tracking your macros, managing dietary requirements, or simply curious about what's on your plate, NutritionChecker has got you covered!
 
