@@ -67,12 +67,16 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation ("com.squareup.retrofit2:retrofit:2.10.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.10.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation ("com.google.code.gson:gson:2.10.1")
 
-    implementation("com.google.dagger:hilt-android:2.51")
+    implementation("com.google.dagger:hilt-android:2.51.1")
 
-    implementation ("androidx.compose.runtime:runtime-livedata:1.7.0-alpha05")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-alpha03")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.7.0-alpha07")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-beta01")
+
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0-alpha06")
 }
