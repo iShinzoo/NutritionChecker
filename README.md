@@ -24,7 +24,7 @@ To build UI.
 [Jetpack Navigation](https://developer.android.com/jetpack/compose/navigation) :
 For navigation between screens and deep linking.
 
-[Calorie Ninjas API](https://developers.google.com/maps/documentation/android-sdk) :
+[Calorie Ninjas API](https://calorieninjas.com/api) :
 To track user's Nutrition activity such as carbs, protiens and other macro and micro nutrients.
 
 ## Installation
