@@ -69,14 +69,16 @@ dependencies {
 
     implementation ("com.squareup.retrofit2:retrofit:2.11.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.google.code.gson:gson:2.12.1")
 
-    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.8.0-beta03")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
-    implementation ("androidx.compose.runtime:runtime-livedata:1.7.0-alpha07")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-beta01")
+    implementation("androidx.compose.material3:material3:1.3.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.1")
 
-    implementation("androidx.compose.material3:material3:1.2.1")
-    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
-    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0-alpha06")
+    implementation ("io.insert-koin:koin-android:4.0.2")
+    implementation ("io.insert-koin:koin-androidx-scope:3.4.0")
+    implementation ("io.insert-koin:koin-androidx-viewmodel:3.4.0")
 }
