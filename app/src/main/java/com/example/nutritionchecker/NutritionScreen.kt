@@ -1,5 +1,8 @@
 package com.example.nutritionchecker
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,16 +36,22 @@ import com.example.nutritionchecker.model.Item
 import com.example.nutritionchecker.model.Nutrition
 
 @Composable
-fun NutritionScreen(
-    viewModel: NutritionViewModel = viewModel()
-) {
+fun NutritionScreen() {
+    val viewModel: NutritionViewModel = viewModel()
     var query by remember { mutableStateOf("") }
     var result by remember { mutableStateOf<Nutrition?>(null) }
     var error by remember { mutableStateOf<String?>(null) }
+    var imageUri by remember { mutableStateOf<Uri?>(null) }
 
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
+
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let { imageUri = it }
+    }
 
     Column(
         modifier = Modifier
@@ -64,6 +73,16 @@ fun NutritionScreen(
                 keyboardController?.hide()
             })
         )
+
+        Button(
+            onClick = { imagePickerLauncher.launch("image/*") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp)
+        ) {
+            Text("Scan Image")
+        }
+
         Button(
             onClick = {
                 if (query.isNotBlank()) {
@@ -84,6 +103,28 @@ fun NutritionScreen(
                 .padding(bottom = 8.dp)
         ) {
             Text("Search")
+        }
+
+        if (imageUri != null) {
+            Button(
+                onClick = {
+                    viewModel.fetchImageNutritionInfo(imageUri!!,
+                        onSuccess = { response ->
+                            result = response
+                            error = null
+                        },
+                        onError = { errorMessage ->
+                            result = null
+                            error = errorMessage
+                        }
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            ) {
+                Text("Process Image")
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))

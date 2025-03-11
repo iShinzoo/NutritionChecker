@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.nutritionchecker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.nutritionchecker"
@@ -18,6 +20,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        buildConfigField("String", "X_API_KEY", "\"${properties.getProperty("X_API_KEY")}\"")
     }
 
     buildTypes {
@@ -38,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -78,7 +86,6 @@ dependencies {
     implementation("androidx.compose.material3:material3-window-size-class:1.3.1")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.1")
 
-    implementation ("io.insert-koin:koin-android:4.0.2")
-    implementation ("io.insert-koin:koin-androidx-scope:3.4.0")
-    implementation ("io.insert-koin:koin-androidx-viewmodel:3.4.0")
+    implementation("io.insert-koin:koin-android:3.5.0")
+    implementation("io.insert-koin:koin-androidx-navigation:3.5.0")
 }
